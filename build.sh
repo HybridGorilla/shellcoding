@@ -17,7 +17,7 @@ if [[ $1 == *.nasm ]]; then
 	strace ./bind-shell
 	exit 
 else
-	echo "[error] you must specify a file ending with .nasm"
+	echo "[error] you must specify a file ending with .nasm" 
 	exit
 fi
 
