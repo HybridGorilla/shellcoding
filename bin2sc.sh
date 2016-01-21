@@ -1,6 +1,6 @@
 #!/bin/bash
 #source is http://www.commandlinefu.com/commands/view/6051/get-all-shellcode-on-binary-file-from-objdump
-#I just made the program name an input 
+#It reads the binary from a command line arg, hilights the null bytes and prints the length
 if [ "$#" -ne 1 ]; then
     echo "usage: ./bin2sc [binary]"
     exit
