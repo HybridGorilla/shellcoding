@@ -6,4 +6,8 @@ if [ "$#" -ne 1 ]; then
     exit
 fi
 
-objdump -d $1|grep '[0-9a-f]:'|grep -v 'file'|cut -f2 -d:|cut -f1-6 -d' '|tr -s ' '|tr '\t' ' '|sed 's/ $//g'|sed 's/ /\\x/g'|paste -d '' -s |sed 's/^/"/'|sed 's/$/"/g'
+shellcode=$(objdump -d $1|grep '[0-9a-f]:'|grep -v 'file'|cut -f2 -d:|cut -f1-6 -d' '|tr -s ' '|tr '\t' ' '|sed 's/ $//g'|sed 's/ /\\x/g'|paste -d '' -s |sed 's/^/"/'|sed 's/$/"/g')
+echo  "[+] shellcode" 
+echo $shellcode | grep "x00" --color=auto
+echo -n "[+] length: "
+echo -n $shellcode | tr \\ "\n" 2>/dev/null | wc -l
